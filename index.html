@@ -12,23 +12,30 @@
 </head>
 
 <body>
-    <!-- header starts  -->
-    <header>
-        <h1 class="text-center my-4">Phone <span class="text-success">Hub</span></h1>
-    </header>
-    <!-- header ends  -->
-    <!-- main part starts  -->
-    <main>
-        <!-- search bar starts  -->
-        <div class="input-group mb-3 w-50 mx-auto">
-            <input type="text" class="form-control" id="search-field" placeholder="Please search your desire phone">
-            <button onclick="searchInput()" class="btn btn-outline-secondary" type="button"
-                id="search-btn">Search</button>
-        </div>
-        <!-- search bar ends -->
-    </main>
-    <!-- main part ends  -->
+    <div class="container">
+        <!-- header starts  -->
+        <header>
+            <h1 class="text-center my-4">Phone <span class="text-success">Hub</span></h1>
+        </header>
+        <!-- header ends  -->
+        <!-- main part starts  -->
+        <main>
+            <!-- search bar starts  -->
+            <div class="input-group mb-3 w-50 mx-auto">
+                <input type="text" class="form-control" id="search-field" placeholder="Please search your desire phone">
+                <button onclick="searchPhone()" class="btn btn-outline-secondary" type="button"
+                    id="search-btn">Search</button>
+            </div>
+            <!-- search bar ends -->
+            <!-- search results starts here  -->
+            <div class="row row-cols-1 row-cols-md-3 g-4" id="search-result">
 
+            </div>
+            <!-- search results ends here  -->
+        </main>
+        <!-- main part ends  -->
+
+    </div>
     <!-- bootsrap bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
