@@ -2,26 +2,33 @@
 const searchPhone = () => {
     const searchField = document.getElementById('search-field');
     const searchText = searchField.value;
-    const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
-
-    fetch(url)
-        .then(res => res.json())
-        .then(json => displaySearchResult(json.data))
-
     searchField.value = '';
+    if (searchText == '') {
+        alert('Please write something at searchbox')
+    }
+    else {
+        const url = ` https://openapi.programming-hero.com/api/phones?search=${searchText}`
+
+        fetch(url)
+            .then(res => res.json())
+            .then(json => displaySearchResult(json.data))
+    }
 }
 
 // search results area 
 const displaySearchResult = (data) => {
 
     const searchResult = document.getElementById('search-result');
-
+    searchResult.textContent = '';
+    if (data.length == 0) {
+        alert('No result Found')
+    }
     data.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
                     <div class="card h-100">
-                        <img src="${phone.image}" class="card-img-top">
+                        <img src="${phone.image}" class="card-img-top w-75 mx-auto mt-2">
                         <div class="card-body">
                             <h5 class="card-title">Name: ${phone.phone_name}</h5>
                             <p class="card-text">Brand: ${phone.brand}</p>
@@ -45,6 +52,7 @@ const loadPhoneDetails = phoneId => {
 
 const displayPhoneDetails = details => {
     const phoneDetails = document.getElementById('phone-details');
+    phoneDetails.textContent = '';
     const div = document.createElement('div');
     div.classList.add('card')
     div.classList.add('p-2')
@@ -55,10 +63,13 @@ const displayPhoneDetails = details => {
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                         additional content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <h5 class="card-title">${details.name}</h5>
+                    <p class="card-text">Main Features: Storage- ${details.mainFeatures.storage} , 
+                    Display- ${details.mainFeatures.displaySize},
+                    Chipset- ${details.mainFeatures.chipSet},
+                    Memory- ${details.mainFeatures.memory} </p>
+                    <p class="card-text">Released Date: ${details.releaseDate}</p>
+                    <p class="card-text">Sensors: ${details.mainFeatures.sensors}</p>
                 </div>
             </div>
         </div>`
