@@ -23,7 +23,7 @@ const displaySearchResult = (data) => {
     if (data.length == 0) {
         alert('No result Found')
     }
-    data.forEach(phone => {
+    data.slice(0, 20).forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -70,6 +70,13 @@ const displayPhoneDetails = details => {
                     Memory- ${details.mainFeatures.memory} </p>
                     <p class="card-text">Released Date: ${details.releaseDate}</p>
                     <p class="card-text">Sensors: ${details.mainFeatures.sensors}</p>
+                    <p class="card-text">Others: WLAN- ${details?.others?.WLAN ?? 'No Data Found'},
+                    Bluetooth- ${details?.others?.Bluetooth ?? 'No Data Found'},
+                    GPS- ${details?.others?.GPS ?? 'No Data Found'},
+                    NFC- ${details?.others?.NFC ?? 'No Data Found'},
+                    Radio- ${details?.others?.Radio ?? 'No Data Found'},
+                    USB- ${details?.others?.USB ?? 'No Data Found'}
+                    </p>
                 </div>
             </div>
         </div>`
