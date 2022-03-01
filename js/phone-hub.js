@@ -68,7 +68,7 @@ const displayPhoneDetails = details => {
                     Display- ${details.mainFeatures.displaySize},
                     Chipset- ${details.mainFeatures.chipSet},
                     Memory- ${details.mainFeatures.memory} </p>
-                    <p class="card-text">Released Date: ${details.releaseDate}</p>
+                    <p class="card-text">Released Date: ${details.releaseDate ? details.releaseDate : 'Released date not found'}</p>
                     <p class="card-text">Sensors: ${details.mainFeatures.sensors}</p>
                     <p class="card-text">Others: WLAN- ${details?.others?.WLAN ?? 'No Data Found'},
                     Bluetooth- ${details?.others?.Bluetooth ?? 'No Data Found'},
